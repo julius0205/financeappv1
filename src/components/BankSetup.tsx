@@ -1,7 +1,7 @@
 import axios from "axios"
 import { Box, Button, Select } from '@chakra-ui/react'
 import { useEffect, useState } from "react"
-import { AccessBank, AccesToken, Bank } from "../types"
+import { AccessBank, AccesToken, Bank } from "../types/types"
 import React from "react"
 
 export const BankSetup = () => {
