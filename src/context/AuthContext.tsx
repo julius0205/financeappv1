@@ -1,3 +1,4 @@
+import { prototype } from 'events'
 import firebase, { initializeApp } from 'firebase/app'
 import 'firebase/auth'
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
@@ -5,13 +6,13 @@ import React, { useEffect, useState } from 'react'
 import { createContext, FC, ReactNode } from 'react'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDhklymno8Z4Ir35vm-cTX9iYmvgWgSP_0",
-    authDomain: "financedashboard-d45a7.firebaseapp.com",
-    databaseURL: "https://financedashboard-d45a7-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "financedashboard-d45a7",
-    storageBucket: "financedashboard-d45a7.appspot.com",
-    messagingSenderId: "1032321724483",
-    appId: "1:1032321724483:web:e10eb6e9a7c6ed2b87e4f6"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
 }
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)

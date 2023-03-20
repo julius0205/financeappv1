@@ -1,38 +1,35 @@
-import React, {useState } from 'react'
+import { Box, Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react';
+import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext';
 
-function Registration() {
+export const Registration = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const { signUp } = useAuth();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = () => {
         try {
-            await signUp(email, password);
+            console.log("clicked")
+            signUp(email, password);
         } catch (error) {
             console.error(error)
         };
-
-        return (
-            <>
-                <div>
-                    <h2>Signup</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Email:
-                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        </label>
-                        <label>
-                            Password:
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        </label>
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </>
-        )
     }
-}
 
-export default Registration
+    return (
+        <>
+            <Box mx={4} my={4}>
+                <Heading mb={4} as='h2' size='xl'>Registrieren</Heading>
+                <FormControl onSubmit={handleSubmit}>
+                    <FormLabel>E-Mail</FormLabel>
+                    <Input type="email" placeholder='E-Mail' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <FormLabel>Password</FormLabel>
+                    <Input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <Button mt={4} type="submit" onClick={handleSubmit}>Registrieren</Button>
+                </FormControl>
+            </Box>
+            <Button onClick={handleSubmit}>TEST</Button>
+        </>
+    )
+}

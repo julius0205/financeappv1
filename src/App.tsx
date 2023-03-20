@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { Routes, Route } from 'react-router-dom';
 import { Login } from './pages/Login';
-import Registration from './pages/Registration';
+import { Registration } from './pages/Registration';
 
 function App() {
   return (
